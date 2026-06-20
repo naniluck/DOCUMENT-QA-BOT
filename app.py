@@ -15,7 +15,7 @@ client = chromadb.PersistentClient(path="./db")
 collection = client.get_or_create_collection(name="document_knowledge_base", embedding_function=embedding_fn)
 
 # 2. ఫైల్ అప్‌లోడ్ సెక్షన్
-uploaded_file = st.file_uploader("ఒక PDF ఫైల్ అప్‌లోడ్ చేయండి", type=["pdf"])
+uploaded_file = st.file_uploader("Upload Your PDF here", type=["pdf"])
 
 if uploaded_file is not None:
     # PDF చదవడం
@@ -29,7 +29,7 @@ if uploaded_file is not None:
     st.success("PDF ఫైల్ సక్సెస్‌ఫుల్‌గా అప్‌లోడ్ అయ్యింది! ఇప్పుడు మీరు ప్రశ్న అడగవచ్చు.")
 
 # 3. ప్రశ్న అడిగే సెక్షన్
-query = st.text_input("మీ ప్రశ్న ఇక్కడ టైప్ చేయండి:")
+query = st.text_input("Type your Question here:")
 
 if st.button("Submit"):
     if query:
