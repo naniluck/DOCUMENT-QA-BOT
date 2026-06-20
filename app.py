@@ -7,7 +7,10 @@ st.title("Document QA Bot")
 # DB connection logic
 embedding_fn = embedding_functions.SentenceTransformerEmbeddingFunction(model_name="all-MiniLM-L6-v2")
 client = chromadb.PersistentClient(path="./db")
-collection = client.get_collection(name="document_knowledge_base", embedding_function=embedding_fn)
+try:
+    collection = client.get_collection(name="document_knowledge_base", embedding_function=embedding_fn)
+except:
+    collection=client.create_collection(name="document_knowledge_base", embedding_function=embedding_fn)
 
 query = st.text_input("Meeru adhagalanukune prashna ikkada type cheyandi:")
 
